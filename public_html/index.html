@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app>
+    <head>
+        <title>Lista Angular</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/lista-compras.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.js"></script>
+        <script type="text/javascript" src="js/lista-compras.js"></script>
+    </head>
+    <body>
+        <div class="container" ng-controller="ListaComprasController">
+            <div class="row">
+                <div class="page-header">
+                    <h1>Compras</h1>
+                </div><!--fecha header-->
+            </div><!--fecha rows-->
+            <div class="row">
+                <table id="lista-compras" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Comprado</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in itens" class="comprado-{{item.comprado}}">
+
+                            <td><input type="checkbox" ng-model="item.comprado"/></td>
+                            <td><strong>{{item.produto}}</td>
+                            <td>{{item.quantidade}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!--fecha row-->
+            <div class="row">
+                <form class="form-inline" name="formItem">
+                    <input type="text" ng-model="item.produto" placeholder="Produto"/>
+                    <input type="number" ng-model="item.quantidade" placeholder="Quantidade" class="input-small"/>
+                    <button class="btn btn-primary" ng-click="adicionarItem()"/>
+                    Adicionar item
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
